@@ -1,0 +1,323 @@
+@import "../../bower_components/bootstrap/less/bootstrap.less";
+
+.fixed-alert {
+  position: fixed;
+  text-align: center;
+  width: 100%;
+  top: 78px;
+  z-index: 100000;
+}
+
+.modal-select {
+    height: 34px;
+    padding: 6px 12px;
+    font-size: 14px;
+    line-height: 1.42857143;
+    color: #555555;
+    background-color: #ffffff;
+    background-image: none;
+    border: 1px solid #cccccc;
+    border-radius: 4px;
+}
+
+.modal-column {display: inline;}
+
+body {
+  background: url(../images/bg.png);
+  background-color: #fffffb;
+  font-family: 'Open Sans', sans-serif;
+}
+
+.login {
+  margin-top: 32px;
+  padding-top: 16px;
+  border: 1px solid #eee;
+  box-shadow: 0 0 1px #eee;
+}
+nav.topnav {
+  background: rgb(253, 253, 253);
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+  margin-bottom: 8px;
+  .logo {
+    margin: 0 0 0 16px;
+    color: #fff;
+    font-size: 0;
+    text-decoration: none;
+    background-image: url(../images/logo-horavip.png);
+    background-repeat: no-repeat;
+    background-size: 160px;
+    background-position: center center;
+    height: 56px;
+    width: 160px;
+    float: left;
+  }
+  ul {
+    list-style: none;
+    margin: 0;
+    float: right;
+    li {
+      float: left;
+      a {
+        display: block;
+        padding: 28px 16px;
+        height: 56px;
+        border-left: 1px solid #eee;
+        line-height: 0;
+        font-size: 11px;
+        text-decoration: none;
+        color: #777;
+        &:hover {
+          background: #F5F5F5;
+        }
+      }
+    }
+
+  }
+}
+
+
+nav.day-menu {
+margin: 16px;
+text-align: center;
+  span {
+    border: 1px solid #eee;
+    border-radius: 100px;
+    padding: 16px;
+    background: #fff;
+    display: inline-block;
+    cursor: pointer;
+    box-shadow: 0 0 1px #ccc;
+    &.date {
+      padding: 16px 32px;}
+    &.previous-day {float: left;}
+    &.next-day {float: right;}
+  }
+}
+
+.modal-lg {
+  width: 96%;
+  margin: 16px;
+}
+
+.modal-scheduling {
+  background: url(../images/bg.png);
+  .modal-header {
+    background: #fff;
+    select {
+      height: 34px;
+      padding: 6px 12px;
+      font-size: 14px;
+      line-height: 1.42857143;
+      color: #555555;
+      background-color: #ffffff;
+      background-image: none;
+      border: 1px solid #cccccc;
+      border-radius: 4px;
+    }
+  }
+  .modal-body {
+    overflow: hidden;
+    padding: 0;
+  }
+  ul {
+    float: left;
+    list-style: none;
+    padding: 0;
+    padding: 16px;
+    border-right: 1px solid #eee;
+    li {
+      padding: 12px 16px;
+      border: 1px solid #eee;
+      background: #eee;
+      margin-bottom: -1px;
+      // margin-bottom: 8px;
+      // border-radius: 4px;
+      display: inline-block;
+      cursor: pointer;
+      background: #fff;
+      box-shadow: 0 1px 1px rgba(0, 0, 0, 0.1);
+      width: 100%;
+      font-weight: 400;
+      &:hover {
+        background: #eee;
+        border: 1px solid #ddd;
+      }
+      &.active {
+        background: #F13480;
+        border-color: #CD276A;
+        border-radius: 0;
+        color: #fff;
+      }
+
+    }
+    &.service {
+      width: 30%;
+      select {
+        margin-bottom: 12px;
+      }
+    }
+    &.customer {
+      width:50%;
+      .nav-tabs  {
+        padding: 0 0 12px;
+        li {
+          padding: 0;
+          background: #ddd;
+          border: 1px solid #ccc;
+          border-radius: none;
+          a {
+            color: #999;
+            margin: 0;
+            border-radius: 0;
+
+          }
+          &.active {
+            background: #fff;
+            color: #555;
+            border: none;
+            a {color: #555;}
+          }
+        }
+      }
+    }
+    &.time {
+      width: 20%;
+      li {
+        font-size: 16px;
+        text-align: center;
+        span {
+          font-size: 6px;
+          color: #ddd;
+          display: none;
+        }
+      }
+    }
+  }
+}
+
+.content-box {
+  background: #fff;
+  padding: 16px;
+  border-radius: 4px;
+  border: 1px solid #eee;
+  margin: 16px;
+}
+
+//new styles for v0.2
+.customers-list, .customers-scheduled {
+  table {
+    width: 100%;
+    border-radius: 3px;
+    border: 1px solid #ddd;
+    margin-bottom: 16px;
+    .phone {
+      color: #888;
+      font-size: 11px;
+      font-style: italic;
+    }
+    ul {
+      padding: 0;
+      list-style: none;
+      margin: 0;
+    }
+    thead {
+      background: #eee;
+      tr, td {
+      background: none;
+      border:none;
+      padding: 4px 12px;
+      font-style: italic;
+      font-size: 10px;
+      color: #999;
+      }
+    }
+    tr {
+      border: 1px solid #ddd;
+      cursor: pointer;
+      &.active td {
+        background: rgb(234, 255, 222);
+        font-weight: bold;
+      }
+    }
+    td {
+      padding: 12px;
+      margin-bottom: 4px;
+      font-size: 12px;
+      background: #fff;
+      }
+    }
+  }
+.customer-order {
+  background: #fff;
+  border:1px solid #ddd;
+  border-radius: 3px;
+  padding: 24px;
+  .customer-infos {
+    border-bottom: 1px solid #ddd;
+    padding-bottom: 8px;
+    margin-bottom: 12px;
+    h4 {
+      margin: 0px;
+    }
+    span {
+      font-size: 10px;
+      color: #999;
+    }
+  }
+  table {
+    width: 100%;
+    font-size: 12px;
+    td:last-child {text-align: center;}
+    thead {
+      font-size: 10px;
+      color: #ccc;
+      td {
+      padding: 4px 0 0;
+      }
+    }
+    td {
+      padding: 6px 12px 12px 0;
+    }
+    tfoot {
+      border-top: 1px solid #ddd;
+      font-size: 12px;
+      color: #999;
+      td {
+      padding: 24px 0;
+      }
+      td:last-child {
+        font-size: 26px;
+        font-weight: bold;
+        color: #000;
+        text-align: center;
+      }
+
+    }
+  }
+}
+
+.save-item {
+  text-align: left;
+  span {
+  // font-size: 16px;
+  text-align: center;
+  }
+}
+.btn-actions {
+  text-align: right;
+  span {
+  transition: 300ms;
+  font-size: 20px;
+  padding-left: 4px;
+  opacity: 0.5;
+  &:hover {
+    opacity: 1;
+  }
+  &.glyphicon-remove-circle {color: red;}
+  &.glyphicon-upload {color: #0A5494;}
+  &.glyphicon-ok-circle {color: green;}
+  &.glyphicon-time {color: orange;}
+  &.glyphicon-edit {color: orange;}
+  }
+}

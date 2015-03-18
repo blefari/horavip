@@ -1,0 +1,275 @@
+<!-- Scheduling -->
+<table class="customers-scheduled">
+  <thead>
+  <tr>
+    <td colspan="4">Agendamentos e Recibos</td>
+
+  </tr>
+  </thead>
+  <tr>
+    <td>9:30</td>
+    <td>Rosana Medeiros<br><span class="phone">11-3456-5332</span></td>
+    <td>
+      <ul>
+        <li>Mão</li>
+        <li>Pé</li>
+      </ul>
+    </td>
+    <td class="btn-actions">
+      <span class="glyphicon glyphicon-ok-circle" aria-hidden="true" title="Ver Recibo"></span>
+    </td>
+  </tr>
+  <tr>
+    <td>10:37 - S/A</td>
+    <td>Joseane Cuenca<br><span class="phone">11-964946342</span></td>
+    <td>Escova Progressiva</td>
+    <td class="btn-actions">
+      <span class="glyphicon glyphicon-ok-circle" aria-hidden="true" title="Ver Recibo"></span>
+    </td>
+  </tr>
+  <tr>
+    <td>11:30</td>
+    <td>Rosana Marques<br><span class="phone">11-964946342</span></td>
+    <td>
+      <ul>
+        <li>Spa de Pés</li>
+        <li>Design de Sobrancelhas</li>
+        <li>Mão</li>
+        <li>Escova</li>
+        <li>Hidratação</li>
+      </ul>
+    </td>
+    <td class="btn-actions">
+      <span class="glyphicon glyphicon-ok-circle" aria-hidden="true" title="Ver Recibo"></span>
+    </td>
+  </tr>
+  <tr>
+    <td>14:22 S/A</td>
+    <td>Tamires Soares<br><span class="phone">11-5433-2423</span></td>
+    <td>
+      <ul>
+        <li>Tintura</li>
+        <li>Hidratação</li>
+      </ul>
+    </td>
+    <td class="btn-actions">
+      <span class="glyphicon glyphicon-ok-circle" aria-hidden="true" title="Ver Recibo"></span>
+    </td>
+  </tr>
+  <tr>
+    <td>16:30</td>
+    <td>Kelly Chaves</td>
+    <td>
+      <ul>
+        <li>Depilação - Axila</li>
+        <li>Depilação - Coxas</li>
+      </ul>
+    </td>
+    <td class="btn-actions">
+      <span class="glyphicon glyphicon-upload" aria-hidden="true" title="Iniciar atendimento"></span>
+      <span class="glyphicon glyphicon-glyphicon glyphicon-time" aria-hidden="true" title="Editar"></span>
+      <span class="glyphicon glyphicon-remove-circle" aria-hidden="true" title="Excluir"></span>
+    </td>
+  </tr>
+  <tr>
+    <td>17:00</td>
+    <td>Katarina Bouts</td>
+    <td>
+      <ul>
+        <li>Pé</li>
+        <li>Mão</li>
+      </ul>
+    </td>
+    <td class="btn-actions">
+      <span class="glyphicon glyphicon-upload" aria-hidden="true" title="Iniciar atendimento"></span>
+      <span class="glyphicon glyphicon-glyphicon glyphicon-time" aria-hidden="true" title="Editar"></span>
+      <span class="glyphicon glyphicon-remove-circle" aria-hidden="true" title="Excluir"></span>
+    </td>
+  </tr>
+  <tr>
+    <td>18:30</td>
+    <td>Daniela Souza</td>
+    <td>
+      <ul>
+        <li>Corte</li>
+        <li>Hidratação</li>
+        <li>Maquiagem</li>
+      </ul>
+    </td>
+    <td class="btn-actions">
+      <span class="glyphicon glyphicon-upload" aria-hidden="true" title="Iniciar atendimento"></span>
+      <span class="glyphicon glyphicon-glyphicon glyphicon-time" aria-hidden="true" title="Editar"></span>
+      <span class="glyphicon glyphicon-remove-circle" aria-hidden="true" title="Excluir"></span>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <button class="btn btn-primary btn-xs" data-toggle="modal" data-target="#add-customer">Adicionar</button>
+    </td>
+    <td colspan="3"></td>
+  </tr>
+</table>
+
+
+
+<!-- Modal Add Cliente -->
+<div class="modal fade" id="add-customer" tabindex="-1" role="dialog" aria-labelledby="add-customer" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
+          aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title" id="myModalLabel">Adicionar Cliente em atendimento</h4>
+      </div>
+      <div class="modal-body">
+        <div role="tabpanel">
+
+          <!-- Nav tabs -->
+          <ul class="nav nav-tabs" role="tablist">
+            <li role="presentation" class="active"><a href="#home" aria-controls="home" role="tab" data-toggle="tab">Clientes
+              Cadastrados</a></li>
+            <li role="presentation"><a href="#profile" aria-controls="profile" role="tab" data-toggle="tab">Cliente
+              Novo</a></li>
+          </ul>
+
+          <!-- Tab panes -->
+          <div class="tab-content">
+            <div role="tabpanel" class="tab-pane active" id="home">
+              <select>
+                <option>Adriana Siqueira</option>
+                <option>Adriana Zaffar</option>
+                <option>Bety</option>
+                <option>Denise</option>
+                <option>Mariana</option>
+              </select>
+              <button class="btn btn-small">Editar</button>
+              <div class="form-group">
+                <label for="exampleInputEmail1">Nome Completo</label>
+                <input type="text" class="form-control" id="exampleInputEmail1" placeholder="Adriana Siqueira" readonly>
+              </div>
+
+              <div class="form-group">
+                <label for="exampleInputEmail1">Telefone</label>
+                <input type="text" class="form-control" id="exampleInputEmail1" placeholder="11 943324524" readonly>
+              </div>
+
+              <div class="form-group">
+                <label for="exampleInputEmail1">Email</label>
+                <input type="text" class="form-control" id="exampleInputEmail1" placeholder="dri.siqueira@hotmail.com"
+                       readonly>
+              </div>
+
+            </div>
+            <div role="tabpanel" class="tab-pane" id="profile">
+              <h2>Cadastrar Cliente</h2>
+
+              <div class="form-group">
+                <label for="exampleInputEmail1">Nome Completo</label>
+                <input type="text" class="form-control" id="exampleInputEmail1" placeholder="Nome Completo">
+              </div>
+
+              <div class="form-group">
+                <label for="exampleInputEmail1">Telefone</label>
+                <input type="text" class="form-control" id="exampleInputEmail1" placeholder="Telefone">
+              </div>
+
+              <div class="form-group">
+                <label for="exampleInputEmail1">Email</label>
+                <input type="text" class="form-control" id="exampleInputEmail1" placeholder="Email">
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">fechar</button>
+        <button type="button" class="btn btn-primary">Adicionar</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<!-- Modal Pagamento -->
+<div class="modal fade" id="payment-modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
+          aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title" id="myModalLabel">Pagamento - Camilinha</h4>
+      </div>
+      <div class="modal-body">
+        <div class="col-md-7">
+          <div>Detalhes da transação</div>
+          <table>
+            <thead>
+            <tr>
+              <td>Item</td>
+              <td>Valor</d>
+            </tr>
+            </thead>
+            <tbody>
+            <tr>
+              <td>Mão Decorada (Solange)</td>
+              <td>R$25,00</td>
+            </tr>
+            <tr>
+              <td>Mão Decorada (Solange)</td>
+              <td>R$25,00</td>
+            </tr>
+            <tr>
+              <td>Mão Decorada (Solange)</td>
+              <td>R$25,00</td>
+            </tr>
+            </tbody>
+            <tfoot>
+            <tr>
+              <td>
+                <input type="checkbox" value="">Desconto
+              </td>
+              <td><input type="text" class="form-control" id="exampleInputEmail1" placeholder="dri.siqueira@hotmail.com"
+                         readonly>
+              </td>
+            </tr>
+            <tr>
+              <td>Total</td>
+              <td>R$75,00</td>
+            </tr>
+
+
+            </tfoot>
+          </table>
+        </div>
+        <div class="col-md-5">
+          <p>Forma de Pagamento</p>
+          <button type="button" class="btn btn-primary btn-block">Cartão de Crédito</button>
+          <button type="button" class="btn btn-default btn-block">Cartão de Débito</button>
+          <button type="button" class="btn btn-default btn-block">Dinheiro</button>
+          <button type="button" class="btn btn-default btn-block">Cheque</button>
+          <button type="button" class="btn btn-default btn-block">Pindureta</button>
+
+          <div class="form-group">
+            <div class="checkbox">
+              <label>
+                <input type="checkbox" value="">
+                Enviar Recibo para o email
+              </label>
+            </div>
+            <input type="text" class="form-control" id="exampleInputEmail1" placeholder="dri.siqueira@hotmail.com"
+                   readonly>
+          </div>
+        </div>
+
+      </div>
+
+
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Voltar</button>
+        <button type="button" class="btn btn-primary">Concluir</button>
+      </div>
+    </div>
+  </div>
+</div>
