@@ -15,6 +15,21 @@ angular.module('beautyApp')
           }
         }
       })
+      .state('professionals', {
+        url: '/professionals',
+        templateUrl: 'views/professionals/professionals.html',
+        controller: 'ProfessionalCtrl'
+      })
+      .state('customers', {
+        url: '/customers',
+        templateUrl: 'views/customers/customers.html',
+        controller: 'CustomerCtrl'
+      })
+      .state('products', {
+        url: '/products',
+        templateUrl: 'views/products/products.html',
+        controller: 'ProductCtrl'
+      })
       .state('login', {
         url: '/login',
         templateUrl: 'views/login.html',
