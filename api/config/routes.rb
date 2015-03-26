@@ -23,6 +23,13 @@ Rails.application.routes.draw do
         put '/:id' => 'product#update'
         delete '/:id' => 'product#remove'
       end
+
+      scope 'sale' do
+        get '/' => 'sale#list'
+        post '/' => 'sale#create'
+        put '/:id' => 'sale#update'
+        delete  '/:id' => 'sale#remove'
+      end
     end
   end
 
