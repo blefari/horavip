@@ -11,15 +11,24 @@
       </tr>
     </thead>
     <tbody>
-    <tr>
-      <td>José</td>
-      <td>+55 11 987653212</td>
-      <td>jose@customer.com</td>
-      <td>Ativo</td>
+    <tr ng-repeat="customer in customers">
+      <td>{{customer.name}}</td>
+      <td>{{customer.phone}}</td>
+      <td>{{customer.email}}</td>
+      <td>{{customer.active ? 'Ativo' : 'Desativado'}}</td>
       <td class="btn-actions">
-        <span class="glyphicon glyphicon-edit" aria-hidden="true" title="Excluir"></span>
-        <span class="glyphicon glyphicon-remove-circle" aria-hidden="true" title="Excluir"></span>
+        <span class="glyphicon glyphicon-edit" aria-hidden="true" ng-click="customerModal(true, customer)"></span>
+        <span class="glyphicon glyphicon-remove-circle" aria-hidden="true" ng-click="removeCustomer(customer)"></span>
       </td>
+    </tr>
+    <tr>
+      <td>
+        <button class="btn btn-primary btn-xs" data-toggle="modal" ng-click="customerModal()">Adicionar</button>
+      </td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
     </tr>
     </tbody>
   </table>

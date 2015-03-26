@@ -5,6 +5,9 @@ Rails.application.routes.draw do
     scope 'v1' do
       scope 'customer' do
         get '/' => 'customer#list'
+        post '/' => 'customer#create'
+        put '/:id' => 'customer#update'
+        delete '/:id' => 'customer#remove'
       end
     end
   end

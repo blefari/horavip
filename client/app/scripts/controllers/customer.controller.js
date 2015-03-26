@@ -9,27 +9,63 @@ angular.module('beautyApp')
 
     CustomerService.list().success(function(result) {
       $scope.customers = result;
-      console.log(result);
     });
 
-    $scope.createCustomer = function(customer) {
-      CustomerService.create(customer).success(function(result) {
-
-        if($scope.customers === undefined) {
-          $scope.customers = [];
-        }
-        $scope.customers.push(result);
+    $scope.updateCustomers = function(customer) {
+      if($scope.customers === undefined) {
+        $scope.customers = [];
+      }
+      var cIndex  = $scope.customers.findIndex(function(c) {
+        return c.id === customer.id;
       });
-    };
-
-    $scope.editCustomer = function(customer) {
-      CustomerService.update(customer);//todo: do something
+      if(cIndex > -1) {
+        $scope.customers[cIndex] = customer;
+      } else {
+        $scope.customers.push(customer);
+      }
     };
 
     $scope.removeCustomer = function(customer) {
-      CustomerService.remove(customer);//todo: do something
+      CustomerService.remove(customer).success($scope.updateCustomers);//todo: do something
     };
 
+    $scope.customerModal = function(editMode, customer) {
+      var modal = $modal.open({
+        templateUrl: 'views/customers/customerModal.html',
+        controller: 'CustomerModalCtrl',
+        size: 'sm',
+        resolve: {
+          editMode: function(){
+            return editMode;
+          },
+          customer: function(){
+            return angular.copy(customer);
+          }
+        }
+      });
 
+      modal.result.then($scope.updateCustomers, function(){
+        console.log('modal.dismiss');
+      });
+    };
+  })
+  .controller('CustomerModalCtrl', function($scope, $modalInstance, CustomerService, editMode, customer){
+    $scope.editing = editMode;
+    $scope.customer = customer;
 
+    $scope.close = function(){
+      $modalInstance.dismiss();
+    };
+
+    $scope.save = function(){
+      CustomerService.create($scope.customer).success(function(result) {
+        $modalInstance.close(result);
+      })//todo: do something on error;
+    };
+
+    $scope.update = function() {
+      CustomerService.update($scope.customer).success(function(result){
+        $modalInstance.close(result);
+      });//todo: do something
+    };
   });
