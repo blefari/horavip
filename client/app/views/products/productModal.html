@@ -1,0 +1,25 @@
+<div class="modal-header">
+  <h3 ng-hide="editing">Cadastrar Produto/Serviço</h3>
+  <h3 ng-show="editing">Editar Produto/Serviço</h3>
+</div>
+<div class="modal-body">
+  <div class="form-group">
+    <label>Nome Completo</label>
+    <input type="text" class="form-control" ng-model="product.name" placeholder="Nome Completo">
+  </div>
+
+  <div class="form-group">
+    <label>Preço</label>
+    <input type="number" class="form-control" ng-model="product.price" placeholder="Preço">
+  </div>
+
+  <div class="form-group">
+    <label>Porcentagem</label>
+    <input type="number" class="form-control" ng-model="product.percentage" placeholder="Porcentagem">
+  </div>
+</div>
+<div class="modal-footer">
+  <button type="button" class="btn btn-default" ng-click="close()">Cancelar</button>
+  <button type="button" class="btn btn-primary" ng-click="save()" ng-hide="editing">Adicionar</button>
+  <button type="button" class="btn btn-primary" ng-click="update()" ng-show="editing">Salvar</button>
+</div>
