@@ -9,6 +9,13 @@ Rails.application.routes.draw do
         put '/:id' => 'customer#update'
         delete '/:id' => 'customer#remove'
       end
+
+      scope 'professional' do
+        get '/' => 'professional#list'
+        post '/' => 'professional#create'
+        put '/:id' => 'professional#update'
+        delete '/:id' => 'professional#remove'
+      end
     end
   end
 
