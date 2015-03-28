@@ -5,7 +5,7 @@ angular.module('beautyApp')
     $stateProvider
       .state('home', {
         url: '/',
-        templateUrl: 'views/dashboard.html',
+        templateUrl: 'views/dashboard/dashboard.html',
         controller: 'DashboardCtrl',
         resolve: {
           auth: function($auth, $state) {

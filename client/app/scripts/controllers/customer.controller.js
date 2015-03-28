@@ -11,7 +11,7 @@ angular.module('beautyApp')
       $scope.customers = result;
     });
 
-    $scope.updateCustomers = function(customer) {
+    function updateCustomers(customer) {
       if($scope.customers === undefined) {
         $scope.customers = [];
       }
@@ -26,7 +26,7 @@ angular.module('beautyApp')
     };
 
     $scope.removeCustomer = function(customer) {
-      CustomerService.remove(customer).success($scope.updateCustomers);//todo: do something
+      CustomerService.remove(customer).success(updateCustomers);//todo: do something
     };
 
     $scope.customerModal = function(editMode, customer) {
@@ -44,7 +44,7 @@ angular.module('beautyApp')
         }
       });
 
-      modal.result.then($scope.updateCustomers, function(){
+      modal.result.then(updateCustomers, function(){
         console.log('modal.dismiss');
       });
     };
@@ -60,7 +60,7 @@ angular.module('beautyApp')
     $scope.save = function(){
       CustomerService.create($scope.customer).success(function(result) {
         $modalInstance.close(result);
-      })//todo: do something on error;
+      });//todo: do something on error;
     };
 
     $scope.update = function() {
