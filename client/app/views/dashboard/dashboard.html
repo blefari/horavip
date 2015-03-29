@@ -15,10 +15,12 @@
         <td class="btn-actions"><span class="glyphicon glyphicon-remove-circle" aria-hidden="true"></span></td>
       </tr>
       <tr>
-        <td>
-          <button class="btn btn-primary btn-xs" ng-click="customerModal()">Adicionar</button>
+        <td colspan="2">
+          <input type="text" ng-model="customer" typeahead="customer as customer.name for customer in customers | filter:$viewValue | limitTo:8" class="form-control">
         </td>
-        <td colspan="3"></td>
+        <td class="text-right">
+          <button class="btn btn-primary btn-xs" ng-click="createCurrentSale()">Adicionar</button>
+        </td>
       </tr>
     </table>
   </aside>

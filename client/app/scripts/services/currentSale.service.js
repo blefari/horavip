@@ -9,9 +9,9 @@ angular.module('beautyApp')
       return $http.get(base);
     };
 
-    this.create = function(sale) {
+    this.create = function(customer) {
       return $http.post(base, {
-        sale: sale
+        customerId: customer.id
       });
     };
 

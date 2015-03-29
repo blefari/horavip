@@ -13,10 +13,20 @@ class SaleController < ApplicationController
 
   def createCurrent
     currentSale = CurrentSale.create(current_sale_params)
+    sale = Sale.new
+    sale.user = current_user
+    sale.customer_id = params[:customerId]
+    sale.date = Time.zone.now
+    currentSale.sale = sale
+
     currentSale.user = current_user
     currentSale.save!
 
-    return render json: currentSale
+    return render json: currentSale.to_json(:include => {:sale => {
+        :include => [{:sale_items => {
+            :include => [:product, :professional]
+        }}, :customer]
+    }})
   end
 
   def updateCurrent
@@ -68,11 +78,11 @@ class SaleController < ApplicationController
 
   private
   def sale_params
-    params.require(:sale).permit(:date, :total, :customer, :products)
+    params.require(:sale).permit(:customer, :products)
   end
 
   def current_sale_params
-    params.require(:current_sale).permit(:sale)
+    params.permit(:customer)
   end
   
 end

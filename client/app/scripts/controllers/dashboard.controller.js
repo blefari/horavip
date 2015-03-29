@@ -19,47 +19,16 @@ angular.module('beautyApp')
       console.log($scope.currentSales);
     });
 
-    var customers;
     CustomerService.list().success(function(response){
-      customers = response;
+      $scope.customers = response;
     });
 
-    function updateSales() {
-
-    }
-
-    $scope.customerModal = function() {
-      var modal = $modal.open({
-        templateUrl: 'views/dashboard/saleModal.html',
-        controller: 'SaleModalCtrl',
-        size: 'sm',
-        resolve: {
-          customers: function(){
-            return customers;
-          }
-        }
-      });
-
-      modal.result.then(updateSales, function(){
-        console.log('modal.dismiss');
+    $scope.createCurrentSale = function() {
+      CurrentSaleService.create($scope.customer).success(function(response){
+        response.total = 0;
+        $scope.currentSales.push(response);
+      }).error(function(response){
+        console.log(response);
       });
     };
-  })
-  .controller('SaleModalCtrl', function($scope, $modalInstance, CurrentSaleService, customers){
-    $scope.customers = customers;
-//    $scope.tabs = [
-//      {heading: 'Selecionar', content: 'views/dashboard/selectCustomer.html'},
-//      {heading: 'Cadastrar', content: 'views/dashboard/createCustomer.html'}
-//    ];
-
-    $scope.close = function() {
-      $modalInstance.dismiss();
-    };
-
-    $scope.save = function(){
-      CurrentSaleService.create({
-
-      })
-    };
-
   });
