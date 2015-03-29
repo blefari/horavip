@@ -1,15 +1,22 @@
 'use strict';
 
 angular.module('beautyApp')
-  .controller('DashboardCtrl', function ($scope, $auth, $modal, $state, SaleService, CustomerService) {
+  .controller('DashboardCtrl', function ($scope, $auth, $modal, $state, CurrentSaleService, CustomerService) {
 
     $auth.validateUser().catch(function () {
       $state.go('login');
     });
 
-    SaleService.list().success(function(response){
-      $scope.sales = response;
-      console.log(response);
+    CurrentSaleService.list().success(function(response){
+      $scope.currentSales = response.map(function(currentSale){
+        var total = currentSale.sale.sale_items.sum(function(item){
+          return item.product.price;
+        });
+        currentSale.total = total;
+        return currentSale;
+      });
+
+      console.log($scope.currentSales);
     });
 
     var customers;
@@ -38,20 +45,19 @@ angular.module('beautyApp')
       });
     };
   })
-  .controller('SaleModalCtrl', function($scope, $modalInstance, SaleService, customers){
+  .controller('SaleModalCtrl', function($scope, $modalInstance, CurrentSaleService, customers){
     $scope.customers = customers;
-    $scope.tabs = [
-      {heading: 'Selecionar', content: 'views/dashboard/selectCustomer.html'},
-      {heading: 'Cadastrar', content: 'views/dashboard/createCustomer.html'}
-    ];
+//    $scope.tabs = [
+//      {heading: 'Selecionar', content: 'views/dashboard/selectCustomer.html'},
+//      {heading: 'Cadastrar', content: 'views/dashboard/createCustomer.html'}
+//    ];
 
     $scope.close = function() {
       $modalInstance.dismiss();
     };
 
     $scope.save = function(){
-
-      SaleService.create({
+      CurrentSaleService.create({
 
       })
     };

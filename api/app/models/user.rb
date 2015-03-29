@@ -9,4 +9,5 @@ class User < ActiveRecord::Base
   has_many :professionals
   has_many :products
   has_many :sales
+  has_many :current_sales
 end

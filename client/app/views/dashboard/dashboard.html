@@ -9,9 +9,9 @@
         <td></td>
       </tr>
       </thead>
-      <tr ng-repeat="sale in sales">
-        <td>{{sale.customer.name}}</td>
-        <td>{{sale.total}}</td>
+      <tr ng-repeat="currentSale in currentSales">
+        <td>{{currentSale.sale.customer.name}}</td>
+        <td>{{currentSale.total | currency: 'R$ '}}</td>
         <td class="btn-actions"><span class="glyphicon glyphicon-remove-circle" aria-hidden="true"></span></td>
       </tr>
       <tr>
