@@ -27,7 +27,7 @@ angular
       }
     ]);
   })
-  .run(function ($rootScope, $state, $filter) {
+  .run(function ($rootScope, $state) {
 
     $rootScope.$on('auth:login-success', function () {
       $state.go('home');
@@ -44,4 +44,12 @@ angular
     $rootScope.$on('auth:validation-error', function () {
       $state.go('login');
     });
+
+    $rootScope.$on('auth:validation-success', function (response) {
+//      setValidUser();
+    });
+
+    function setValidUser(){
+//      $auth.validateUser()
+    }
   });

@@ -31,4 +31,12 @@ angular.module('beautyApp')
         console.log(response);
       });
     };
+
+    $scope.selectCurrentSale = function(currentSale){
+      $scope.currentSale = currentSale;
+    };
+
+    $scope.clearCurrentSale = function(){
+      $scope.currentSale = undefined;
+    };
   });
