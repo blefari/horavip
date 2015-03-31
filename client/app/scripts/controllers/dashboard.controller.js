@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('beautyApp')
-  .controller('DashboardCtrl', function ($scope, $auth, $modal, $state, CurrentSaleService, CustomerService) {
+  .controller('DashboardCtrl', function ($scope, $auth, $modal, $state, CurrentSaleService, CustomerService, ProductService, ProfessionalService) {
 
     $auth.validateUser().catch(function () {
       $state.go('login');
@@ -21,6 +21,14 @@ angular.module('beautyApp')
 
     CustomerService.list().success(function(response){
       $scope.customers = response;
+    });
+
+    ProductService.list().success(function(response) {
+      $scope.products = response;
+    });
+
+    ProfessionalService.list().success(function(response) {
+      $scope.professionals = response;
     });
 
     $scope.createCurrentSale = function() {

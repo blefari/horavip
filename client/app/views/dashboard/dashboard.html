@@ -25,9 +25,11 @@
     </table>
   </aside>
 
-  <section class="customer-order collapse-horizontal col-md-6">
+  <section class="customer-order collapse-horizontal col-md-6" ng-show="currentSale"
+    ng-class="{'col-md-offset-1': currentSale === undefined, 'col-md-offset-6': currentSale !== undefined}">
 
-    <div class="customer-infos">
+    <div class="customer-infos clearfix">
+      <button type="button" class="close" aria-label="Close" ng-click="clearCurrentSale()"><span aria-hidden="true">&times;</span></button>
       <span>Cliente</span><h4><strong>{{currentSale.sale.customer.name}}</strong></h4>
       <!--<span>Permanência: 01:23:43</span>-->
     </div>
@@ -51,32 +53,14 @@
       </tr>
       <tr>
         <td>
-          <select class="form-control">
+          <select class="form-control" ng-model="product" ng-options="product as product.name for product in products">
             <option value="" disabled selected>Serviço/Produto</option>
-            <optgroup label="Manicure">
-              <option>Mão Simples - R$20</option>
-              <option>Mão Decorada - R$25</option>
-              <option>Mão Francesinha - R$23</option>
-              <option>Mão Francesinha - R$23</option>
-              </opgroup>
-              <optgroup label="Cabelo">
-                <option>Escova - Cabelo Curto - R$50</option>
-                <option>Escova - Cabelo Comprido - R$70</option>
-              </optgroup>
-              <optgroup label="Bebidas">
-                <option>Coca-Cola Zero Lata 355ml- R$5,50</option>
-                <option>Água C/Gás - Lindoya - 340ml - R$4,00</option>
-              </optgroup>
-            </optgroup>
           </select>
         </td>
         <td colspan="2">
 
-          <select class="form-control">
-            <option value="" disabled selected>Profissional</option>
-            <option>Solange</option>
-            <option>Elizete</option>
-            <option>Ana Paula</option>
+          <select class="form-control" ng-model="professional" ng-options="professional as professional.name for professional in professionals">
+            <option value="">Profissional</option>
           </select>
         </td>
         <td class="save-item">
@@ -85,12 +69,6 @@
           <button class="btn btn-danger btn-md"><span class="glyphicon glyphicon-remove" aria-hidden="true"
                                                       title="Excluir"></span></button>
         </td>
-      </tr>
-      <tr>
-        <td colspan="4">
-          <button class="btn btn-primary btn-lg btn-block">Adicionar Produto/Serviço</button>
-        </td>
-
       </tr>
       <tfoot>
       <tr>

@@ -218,6 +218,8 @@ nav.day-menu {
 
 //new styles for v0.2
 .customers-list, .customers-scheduled {
+  position: absolute;
+  padding-top: 35px;
   table {
     width: 100%;
     border-radius: 3px;
@@ -269,6 +271,7 @@ nav.day-menu {
 }
 
 .customer-order {
+  z-index: -1;
   background: #fff;
   border: 1px solid #ddd;
   border-radius: 3px;
@@ -283,6 +286,12 @@ nav.day-menu {
     span {
       font-size: 10px;
       color: #999;
+    }
+    button {
+      span {
+        font-size: 22px;
+        float: right;
+      }
     }
   }
   table {
