@@ -25,4 +25,11 @@ angular.module('beautyApp')
       });
     };
 
+    this.addProduct = function(sale, productId, professionalId) {
+      return $http.put(base + '/' + sale.id + '/product/', {
+        productId: productId,
+        professionalId: professionalId
+      });
+    }
+
   });

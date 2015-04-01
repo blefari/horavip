@@ -10,7 +10,7 @@ angular.module('beautyApp')
     CurrentSaleService.list().success(function(response){
       $scope.currentSales = response.map(function(currentSale){
         var total = currentSale.sale.sale_items.sum(function(item){
-          return item.product.price;
+          return parseFloat(item.product.price);
         });
         currentSale.total = total;
         return currentSale;
@@ -36,6 +36,14 @@ angular.module('beautyApp')
         response.total = 0;
         $scope.currentSales.push(response);
       }).error(function(response){
+        console.log(response);
+      });
+    };
+
+    $scope.addProduct = function() {
+      var productId = $scope.product ? $scope.product.id : undefined;
+      var professionalId = $scope.professional ? $scope.professional.id : undefined;
+      CurrentSaleService.addProduct($scope.currentSale, productId, professionalId).success(function(response) {
         console.log(response);
       });
     };

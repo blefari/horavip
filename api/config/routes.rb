@@ -30,6 +30,8 @@ Rails.application.routes.draw do
         put '/current/:id' => 'sale#updateCurrent'
         delete  '/current:id' => 'sale#removeCurrent'
 
+        put '/current/:id/product' => 'sale#addProduct'
+
         get '/' => 'sale#list'
         post '/' => 'sale#create'
         put '/:id' => 'sale#update'

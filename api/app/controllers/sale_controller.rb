@@ -45,6 +45,20 @@ class SaleController < ApplicationController
     return render json: currentSale
   end
 
+  def addProduct
+    currentSale = CurrentSale.find(params[:id])
+    saleItem = SaleItem.new
+    saleItem.product_id = params[:productId]
+    saleItem.professional_id = params[:professionalId]
+    currentSale.sale.sale_items << saleItem
+
+    return render json: currentSale.to_json(:include => {:sale => {
+        :include => [{:sale_items => {
+            :include => [:product, :professional]
+        }}, :customer]
+    }})
+  end
+
   def removeCurrent
     currentSale = CurrentSale.find(params[:id])
     currentSale.destroy
@@ -90,7 +104,7 @@ class SaleController < ApplicationController
   end
 
   def current_sale_params
-    params.permit(:customer)
+    params.permit(:customer, :products)
   end
   
 end
