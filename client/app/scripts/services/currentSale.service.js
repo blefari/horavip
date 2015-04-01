@@ -30,6 +30,10 @@ angular.module('beautyApp')
         productId: productId,
         professionalId: professionalId
       });
-    }
+    };
+
+    this.removeProduct = function(productId) {
+      return $http.delete(base + '/product/' + productId);
+    };
 
   });

@@ -48,8 +48,7 @@
          <td>{{item.professional.name}}</td>
          <td>{{item.product.price | currency}}</td>
          <td class="btn-actions">
-           <span class="glyphicon glyphicon-edit" aria-hidden="true" title="Editar"></span>
-           <span class="glyphicon glyphicon-remove-circle" aria-hidden="true" title="Excluir"></span>
+           <span class="glyphicon glyphicon-remove-circle" ng-click="removeProduct(item.id)" aria-hidden="true" title="Excluir"></span>
          </td>
        </tr>
        <tr>

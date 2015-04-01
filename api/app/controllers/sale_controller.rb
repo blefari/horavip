@@ -59,6 +59,12 @@ class SaleController < ApplicationController
     }})
   end
 
+  def removeProduct
+    saleItem = SaleItem.find(params[:id])
+    saleItem.destroy
+    return render json: saleItem
+  end
+
   def removeCurrent
     currentSale = CurrentSale.find(params[:id])
     currentSale.destroy

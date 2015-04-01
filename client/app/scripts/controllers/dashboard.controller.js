@@ -7,13 +7,17 @@ angular.module('beautyApp')
       $state.go('login');
     });
 
+    function calculateTotal(currentSale) {
+      var total = currentSale.sale.sale_items.sum(function(item){
+        return parseFloat(item.product.price);
+      });
+      currentSale.total = total;
+      return currentSale;
+    }
+
     CurrentSaleService.list().success(function(response){
       $scope.currentSales = response.map(function(currentSale){
-        var total = currentSale.sale.sale_items.sum(function(item){
-          return parseFloat(item.product.price);
-        });
-        currentSale.total = total;
-        return currentSale;
+        return calculateTotal(currentSale);
       });
 
       console.log($scope.currentSales);
@@ -44,6 +48,15 @@ angular.module('beautyApp')
       var productId = $scope.product ? $scope.product.id : undefined;
       var professionalId = $scope.professional ? $scope.professional.id : undefined;
       CurrentSaleService.addProduct($scope.currentSale, productId, professionalId).success(function(response) {
+        $scope.currentSale = calculateTotal(response);
+        if(!$scope.$$phase){
+          $scope.$digest();
+        }
+      });
+    };
+
+    $scope.removeProduct = function(productId){
+      CurrentSaleService.removeProduct(productId).success(function(response) {
         console.log(response);
       });
     };
