@@ -25,63 +25,65 @@
     </table>
   </aside>
 
-  <section class="customer-order collapse-horizontal col-md-6" ng-show="currentSale"
+  <section class="customer-order collapse-horizontal col-md-6"
     ng-class="{'col-md-offset-1': currentSale === undefined, 'col-md-offset-6': currentSale !== undefined}">
 
-    <div class="customer-infos clearfix">
-      <button type="button" class="close" aria-label="Close" ng-click="clearCurrentSale()"><span aria-hidden="true">&times;</span></button>
-      <span>Cliente</span><h4><strong>{{currentSale.sale.customer.name}}</strong></h4>
-      <!--<span>Permanência: 01:23:43</span>-->
-    </div>
-    <table class="customer-itens">
-      <thead>
-      <tr>
-        <td>Item</td>
-        <td>Profissional</td>
-        <td>Valor</td>
-        <td></td>
-      </tr>
-      </thead>
-      <tr ng-repeat="item in currentSale.sale.sale_items">
-        <td>{{item.product.name}}</td>
-        <td>{{item.professional.name}}</td>
-        <td>{{item.product.price | currency}}</td>
-        <td class="btn-actions">
-          <span class="glyphicon glyphicon-edit" aria-hidden="true" title="Editar"></span>
-          <span class="glyphicon glyphicon-remove-circle" aria-hidden="true" title="Excluir"></span>
-        </td>
-      </tr>
-      <tr>
-        <td>
-          <select class="form-control" ng-model="product" ng-options="product as product.name for product in products">
-            <option value="" disabled selected>Serviço/Produto</option>
-          </select>
-        </td>
-        <td colspan="2">
+   <div ng-show="currentSale">
+     <div class="customer-infos clearfix">
+       <button type="button" class="close" aria-label="Close" ng-click="clearCurrentSale()"><span aria-hidden="true">&times;</span></button>
+       <span>Cliente</span><h4><strong>{{currentSale.sale.customer.name}}</strong></h4>
+       <!--<span>Permanência: 01:23:43</span>-->
+     </div>
+     <table class="customer-itens">
+       <thead>
+       <tr>
+         <td>Item</td>
+         <td>Profissional</td>
+         <td>Valor</td>
+         <td></td>
+       </tr>
+       </thead>
+       <tr ng-repeat="item in currentSale.sale.sale_items">
+         <td>{{item.product.name}}</td>
+         <td>{{item.professional.name}}</td>
+         <td>{{item.product.price | currency}}</td>
+         <td class="btn-actions">
+           <span class="glyphicon glyphicon-edit" aria-hidden="true" title="Editar"></span>
+           <span class="glyphicon glyphicon-remove-circle" aria-hidden="true" title="Excluir"></span>
+         </td>
+       </tr>
+       <tr>
+         <td>
+           <select class="form-control" ng-model="product" ng-options="product as product.name for product in products">
+             <option value="" disabled selected>Serviço/Produto</option>
+           </select>
+         </td>
+         <td colspan="2">
 
-          <select class="form-control" ng-model="professional" ng-options="professional as professional.name for professional in professionals">
-            <option value="">Profissional</option>
-          </select>
-        </td>
-        <td class="save-item">
-          <button class="btn btn-success btn-md"><span class="glyphicon glyphicon-ok" aria-hidden="true"
+           <select class="form-control" ng-model="professional" ng-options="professional as professional.name for professional in professionals">
+             <option value="">Profissional</option>
+           </select>
+         </td>
+         <td class="save-item">
+           <button class="btn btn-success btn-md"><span class="glyphicon glyphicon-ok" aria-hidden="true"
+                                                        title="Excluir"></span></button>
+           <button class="btn btn-danger btn-md"><span class="glyphicon glyphicon-remove" aria-hidden="true"
                                                        title="Excluir"></span></button>
-          <button class="btn btn-danger btn-md"><span class="glyphicon glyphicon-remove" aria-hidden="true"
-                                                      title="Excluir"></span></button>
-        </td>
-      </tr>
-      <tfoot>
-      <tr>
-        <td></td>
-        <td></td>
-        <td>Total</td>
-        <td>{{currentSale.total | currency}}</td>
-      </tr>
-      </tfoot>
-    </table>
-    <button class="btn btn-success btn-block btn-lg" data-toggle="modal" data-target="#payment-modal">
-      Pagar {{currentSale.total | currency}} <span class="glyphicon glyphicon-chevron-right pull-right" aria-hidden="true"></span>
-    </button>
+         </td>
+       </tr>
+       <tfoot>
+       <tr>
+         <td></td>
+         <td></td>
+         <td>Total</td>
+         <td>{{currentSale.total | currency}}</td>
+       </tr>
+       </tfoot>
+     </table>
+     <button class="btn btn-success btn-block btn-lg" data-toggle="modal" data-target="#payment-modal">
+       Pagar {{currentSale.total | currency}} <span class="glyphicon glyphicon-chevron-right pull-right" aria-hidden="true"></span>
+     </button>
+   </div>
 
   </section>
 </div>

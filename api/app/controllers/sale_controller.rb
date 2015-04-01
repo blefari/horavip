@@ -12,6 +12,14 @@ class SaleController < ApplicationController
   end
 
   def createCurrent
+    currentSales = CurrentSale.joins(:sale).where(sales: {customer_id: params[:customerId]})
+
+    if(currentSales.size > 0)
+      return render json: {
+          "error" => "current_sale.existing"
+      }, status: 400
+    end
+
     currentSale = CurrentSale.create(current_sale_params)
     sale = Sale.new
     sale.user = current_user
