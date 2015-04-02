@@ -42,6 +42,14 @@ angular.module('beautyApp')
       });
     };
 
+    $scope.removeCurrentSale = function(currentSale) {
+      CurrentSaleService.remove(currentSale).success(function(response){
+        $scope.currentSales.remove(response);
+      }).error(function(response){
+        console.log(response);
+      });
+    };
+
     $scope.addProduct = function() {
       var productId = $scope.product ? $scope.product.id : undefined;
       var professionalId = $scope.professional ? $scope.professional.id : undefined;

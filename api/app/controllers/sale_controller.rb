@@ -63,6 +63,10 @@ class SaleController < ApplicationController
 
   def removeCurrent
     currentSale = CurrentSale.find(params[:id])
+    currentSale.sale.sale_items.each do |item|
+      item.destroy
+    end
+    currentSale.sale.destroy
     currentSale.destroy
 
     return render json: currentSale

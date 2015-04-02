@@ -28,7 +28,7 @@ Rails.application.routes.draw do
         get '/current' => 'sale#listCurrent'
         post '/current' => 'sale#createCurrent'
         put '/current/:id' => 'sale#updateCurrent'
-        delete  '/current:id' => 'sale#removeCurrent'
+        delete  '/current/:id' => 'sale#removeCurrent'
 
         put '/current/:id/product' => 'sale#addProduct'
         delete '/current/product/:id' => 'sale#removeProduct'

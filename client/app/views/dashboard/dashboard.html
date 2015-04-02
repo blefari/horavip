@@ -9,10 +9,10 @@
         <td></td>
       </tr>
       </thead>
-      <tr ng-repeat="currentSale in currentSales" ng-click="selectCurrentSale(currentSale)">
-        <td>{{currentSale.sale.customer.name}}</td>
-        <td>{{currentSale.total | currency}}</td>
-        <td class="btn-actions"><span class="glyphicon glyphicon-remove-circle" aria-hidden="true"></span></td>
+      <tr ng-repeat="currentSale in currentSales">
+        <td ng-click="selectCurrentSale(currentSale)">{{currentSale.sale.customer.name}}</td>
+        <td ng-click="selectCurrentSale(currentSale)">{{currentSale.total | currency}}</td>
+        <td class="btn-actions"><span class="glyphicon glyphicon-remove-circle" ng-click="removeCurrentSale(currentSale)"></span></td>
       </tr>
       <tr>
         <td colspan="2">
@@ -64,8 +64,7 @@
              </select>
            </td>
            <td class="save-item" colspan="2" >
-             <button class="btn btn-success btn-sm" ng-click="addProduct()"><span class="glyphicon glyphicon-ok" aria-hidden="true"
-                                                                                  title="Excluir"></span></button>
+             <button class="btn btn-success btn-sm" ng-click="addProduct()"><span class="glyphicon glyphicon-ok"></span></button>
            </td>
          </tr>
          <tfoot>
