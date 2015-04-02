@@ -19,8 +19,6 @@ angular.module('beautyApp')
       $scope.currentSales = response.map(function(currentSale){
         return calculateTotal(currentSale);
       });
-
-      console.log($scope.currentSales);
     });
 
     CustomerService.list().success(function(response){
@@ -48,16 +46,34 @@ angular.module('beautyApp')
       var productId = $scope.product ? $scope.product.id : undefined;
       var professionalId = $scope.professional ? $scope.professional.id : undefined;
       CurrentSaleService.addProduct($scope.currentSale, productId, professionalId).success(function(response) {
-        $scope.currentSale = calculateTotal(response);
-        if(!$scope.$$phase){
-          $scope.$digest();
-        }
+        $scope.currentSale.sale.sale_items.push(response);
+        calculateTotal($scope.currentSale);
       });
     };
 
     $scope.removeProduct = function(productId){
       CurrentSaleService.removeProduct(productId).success(function(response) {
-        console.log(response);
+        $scope.currentSale.sale.sale_items.remove(function(item){
+          return item.id === response.id;
+        });
+        calculateTotal($scope.currentSale);
+      });
+    };
+
+    $scope.checkout = function() {
+      var modal = $modal.open({
+        templateUrl: 'views/dashboard/checkoutModal.html',
+        controller: 'CheckoutModalCtrl',
+        size: 'md',
+        resolve: {
+          currentSale: function(){
+            return $scope.currentSale;
+          }
+        }
+      });
+
+      modal.result.then(function(){}, function(){
+        console.log('modal.dismiss');
       });
     };
 
@@ -67,5 +83,12 @@ angular.module('beautyApp')
 
     $scope.clearCurrentSale = function(){
       $scope.currentSale = undefined;
+    };
+  })
+  .controller('CheckoutModalCtrl', function($scope, $modalInstance, CurrentSaleService, currentSale){
+    $scope.currentSale = currentSale;
+
+    $scope.close = function(){
+      $modalInstance.dismiss();
     };
   });

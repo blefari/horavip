@@ -52,11 +52,7 @@ class SaleController < ApplicationController
     saleItem.professional_id = params[:professionalId]
     currentSale.sale.sale_items << saleItem
 
-    return render json: currentSale.to_json(:include => {:sale => {
-        :include => [{:sale_items => {
-            :include => [:product, :professional]
-        }}, :customer]
-    }})
+    return render json: saleItem.to_json(:include => [:product, :professional])
   end
 
   def removeProduct

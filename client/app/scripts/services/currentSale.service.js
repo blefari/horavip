@@ -36,4 +36,8 @@ angular.module('beautyApp')
       return $http.delete(base + '/product/' + productId);
     };
 
+    this.complete = function(sale){
+      return $http.put(base + '/' + sale.id + '/complete');
+    }
+
   });

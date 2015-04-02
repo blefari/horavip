@@ -46,10 +46,5 @@ angular
     });
 
     $rootScope.$on('auth:validation-success', function (response) {
-//      setValidUser();
     });
-
-    function setValidUser(){
-//      $auth.validateUser()
-    }
   });
