@@ -56,6 +56,8 @@ angular.module('beautyApp')
       CurrentSaleService.addProduct($scope.currentSale, productId, professionalId).success(function(response) {
         $scope.currentSale.sale.sale_items.push(response);
         calculateTotal($scope.currentSale);
+        $scope.product = undefined;
+        $scope.professional = undefined;
       });
     };
 

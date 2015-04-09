@@ -28,8 +28,8 @@
   <section class="customer-order collapse-horizontal col-md-6"
     ng-class="{'col-md-offset-1': currentSale === undefined, 'col-md-offset-6': currentSale !== undefined}">
 
-   <div ng-switch on="displayCheckout">
-     <div class="animate-switch-left" ng-show="currentSale" ng-switch-default>
+   <div>
+     <div class="animate-switch-left" ng-show="currentSale">
        <div class="customer-infos clearfix">
          <button type="button" class="close" aria-label="Close" ng-click="clearCurrentSale()"><span aria-hidden="true">&times;</span></button>
          <span>Cliente</span><h4><strong>{{currentSale.sale.customer.name}}</strong></h4>
