@@ -3,17 +3,23 @@
     aria-hidden="true">&times;</span></button>
   <h4 class="modal-title" id="myModalLabel">Pagamento - {{currentSale.sale.customer.name}}</h4>
 </div>
-<div class="modal-body clearfix">
-  <div class="pull-left">
-    <table class="customer-itens">
+<div class="modal-body checkout clearfix">
+  <div class="">
+    <table class="checkout-overview">
       <thead>
       <tr>
         <td>Item</td>
         <td>Profissional</td>
         <td>Valor</td>
-        <td></td>
       </tr>
       </thead>
+      <!-- Mock -->
+      <tr>
+        <td>Mão Decorada</td>
+        <td>Barbara</td>
+        <td>R$25,00</td>
+      </tr>
+
       <tr ng-repeat="item in currentSale.sale.sale_items">
         <td>{{item.product.name}}</td>
         <td>{{item.professional.name}}</td>
@@ -21,15 +27,12 @@
       </tr>
       <tfoot>
       <tr>
-        <td></td>
-        <td></td>
-        <td>Total</td>
-        <td>{{currentSale.total | currency}}</td>
+        <td colspan="3">Total: {{currentSale.total | currency}}</td>
       </tr>
       </tfoot>
     </table>
   </div>
-  <div class="pull-right">
+  <div class="payment-method">
     <p>Forma de Pagamento</p>
 
     <div class="btn-group">

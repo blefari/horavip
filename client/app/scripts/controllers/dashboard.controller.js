@@ -74,7 +74,7 @@ angular.module('beautyApp')
       var modal = $modal.open({
         templateUrl: 'views/dashboard/checkoutModal.html',
         controller: 'CheckoutModalCtrl',
-        size: 'md',
+        size: 'lg',
         resolve: {
           currentSale: function(){
             return $scope.currentSale;
