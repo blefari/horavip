@@ -8,7 +8,7 @@ angular.module('beautyApp')
       $auth.signOut()
         .then(function() {
         })
-        .catch(function(resp) {
+        .catch(function() {
         });
     };
   });

@@ -60,7 +60,8 @@ angular.module('beautyApp')
     $scope.save = function(){
       ProductService.create($scope.product).success(function(result) {
         $modalInstance.close(result);
-      })//todo: do something on error;
+      });
+      //todo: do something on error
     };
 
     $scope.update = function() {

@@ -23,7 +23,7 @@ angular.module('beautyApp')
       } else {
         $scope.customers.push(customer);
       }
-    };
+    }
 
     $scope.removeCustomer = function(customer) {
       CustomerService.remove(customer).success(updateCustomers);//todo: do something

@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('beautyApp')
-  .controller('AuthCtrl', ['$scope', '$location', '$auth', '$http', function ($scope, $location, $auth, $http) {
+  .controller('AuthCtrl', ['$scope', '$location', '$auth', '$http', function ($scope, $location, $auth) {
 
     $scope.handleRegBtnClick = function () {
       $auth.submitRegistration($scope.registrationForm).then(function () {

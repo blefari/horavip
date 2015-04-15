@@ -1,0 +1,10 @@
+{
+  "development": {
+    "ENV": {
+      "apiEndpoint": "http://localhost:3000"
+    }
+  },
+  "production": {
+    "apiEndpoint": "http://horavip.herokuapp.com"
+  }
+}

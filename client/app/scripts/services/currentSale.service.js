@@ -38,6 +38,6 @@ angular.module('beautyApp')
 
     this.complete = function(sale){
       return $http.put(base + '/' + sale.id + '/complete');
-    }
+    };
 
   });

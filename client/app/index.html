@@ -13,16 +13,13 @@
 
 
   <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
-  <!-- build:css(.) styles/vendor.css -->
-  <!-- bower:css -->
-  <link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.css" />
-  <link rel="stylesheet" href="bower_components/font-awesome/css/font-awesome.css" />
-  <!-- endbower -->
+  <!-- build:css /app/main.css -->
+  <!-- inject:css -->
+  <!-- endinject -->
   <!-- endbuild -->
-  <!-- build:css(.tmp) styles/main.css -->
-  <link rel="stylesheet" href="/styles/main.css">
-  <!-- endbuild -->
-  <base href="/"/>
+  <style>[ng-cloak] {
+    display: none;
+  }</style>
 </head>
 <body ng-app="beautyApp">
 
@@ -60,45 +57,14 @@
   ga('send', 'pageview');
 </script>
 
-<!-- build:js(.) scripts/oldieshim.js -->
-<!--[if lt IE 9]>
-<script src="bower_components/es5-shim/es5-shim.js"></script>
-<script src="bower_components/json3/lib/json3.js"></script>
-<![endif]-->
-<!-- endbuild -->
-
 <!-- build:js(.) scripts/vendor.js -->
 <!-- bower:js -->
-<script src="bower_components/jquery/dist/jquery.js"></script>
-<script src="bower_components/angular/angular.js"></script>
-<script src="bower_components/bootstrap/dist/js/bootstrap.js"></script>
-<script src="bower_components/sugar/release/sugar.min.js"></script>
-<script src="bower_components/angular-cookie/angular-cookie.js"></script>
-<script src="bower_components/ng-token-auth/dist/ng-token-auth.js"></script>
-<script src="bower_components/angular-ui-router/release/angular-ui-router.js"></script>
-<script src="bower_components/angular-bootstrap/ui-bootstrap-tpls.js"></script>
 <!-- endbower -->
 <!-- endbuild -->
 
-<!-- build:js({.tmp,app}) scripts/scripts.js -->
-<script src="scripts/libs/angular-locale_pt-br.js"></script>
-<script src="scripts/app.js"></script>
-<script src="scripts/config.js"></script>
-<script src="scripts/routes.js"></script>
-<script src="scripts/controllers/login.controller.js"></script>
-<script src="scripts/controllers/dashboard.controller.js"></script>
-<script src="scripts/controllers/common/header.js"></script>
-<script src="scripts/controllers/common/footer.js"></script>
-<script src="scripts/controllers/auth/auth.js"></script>
-<script src="scripts/controllers/customer.controller.js"></script>
-<script src="scripts/controllers/professional.controller.js"></script>
-<script src="scripts/controllers/product.controller.js"></script>
-<script src="scripts/services/util.js"></script>
-<script src="scripts/services/customer.service.js"></script>
-<script src="scripts/services/professional.service.js"></script>
-<script src="scripts/services/product.service.js"></script>
-<script src="scripts/services/sale.service.js"></script>
-<script src="scripts/services/currentSale.service.js"></script>
+<!-- build:js /app/main.js -->
+<!-- inject:js -->
+<!-- endinject -->
 <!-- endbuild -->
 </body>
 </html>

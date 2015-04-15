@@ -16,7 +16,10 @@ angular
     'ui.router'
   ])
   .config(function ($locationProvider, $urlRouterProvider, $authProvider, ENV) {
-    $locationProvider.html5Mode(true).hashPrefix('!');
+    $locationProvider.html5Mode({
+      enabled: true,
+      requireBase: false
+    }).hashPrefix('!');
     $urlRouterProvider.otherwise('/');
 
     $authProvider.configure([
@@ -45,6 +48,6 @@ angular
       $state.go('login');
     });
 
-    $rootScope.$on('auth:validation-success', function (response) {
+    $rootScope.$on('auth:validation-success', function () {
     });
   });
