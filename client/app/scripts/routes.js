@@ -25,6 +25,11 @@ angular.module('beautyApp')
         templateUrl: 'views/customers/customers.html',
         controller: 'CustomerCtrl'
       })
+      .state('reports', {
+        url: '/reports',
+        templateUrl: 'views/reports/reports.html',
+        controller: 'ReportsCtrl'
+      })
       .state('products', {
         url: '/products',
         templateUrl: 'views/products/products.html',
