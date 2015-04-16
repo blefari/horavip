@@ -37,8 +37,9 @@ angular.module('beautyApp')
       SaleService.create($scope.customer).success(function(response){
         response.total = 0;
         $scope.currentSales.push(response);
-      }).error(function(response){
-        console.log(response);
+        $scope.customer = undefined;
+      }).error(function(){
+        $scope.customer = undefined;
       });
     };
 
@@ -82,7 +83,12 @@ angular.module('beautyApp')
         }
       });
 
-      modal.result.then(function(){}, function(){
+      modal.result.then(function(sale){
+        $scope.clearCurrentSale();
+        $scope.currentSales.remove(function(item){
+          return item.id === sale.id;
+        });
+      }, function(){
         console.log('modal.dismiss');
       });
     };
@@ -100,5 +106,16 @@ angular.module('beautyApp')
 
     $scope.close = function(){
       $modalInstance.dismiss();
+    };
+
+    $scope.completeSale = function() {
+      if(!$scope.currentSale.paymentMethod) {
+        //todo: do something
+      } else {
+        $scope.currentSale.status = 'COMPLETED';
+        SaleService.complete(currentSale).success(function(response){
+          $modalInstance.close(response);
+        });
+      }
     };
   });

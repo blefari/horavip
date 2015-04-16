@@ -20,7 +20,7 @@ class SaleController < ApplicationController
 
 
   def list
-    sales = current_user.sales.where(status: 'ONGOING')
+    sales = current_user.sales.where(status: params[:status])
     return render json: sales.to_json(:include => [{:sale_items => {
         :include => [:product, :professional]
     }}, :customer])
@@ -47,12 +47,15 @@ class SaleController < ApplicationController
     }}, :customer])
   end
 
-  def update
+  def completeSale
     sale = Sale.find(params[:id])
-    sale.update_attributes(sale_params)
+    sale.status = 'COMPLETED'
+    sale.payment_method = params[:paymentMethod]
     sale.save
 
-    return render json: sale
+    return render json: sale.to_json(:include => [{:sale_items => {
+        :include => [:product, :professional]
+    }}, :customer])
   end
 
   def remove
@@ -64,7 +67,7 @@ class SaleController < ApplicationController
 
   private
   def sale_params
-    params.require(:sale).permit(:customer, :products)
+    params.require(:sale).permit(:payment_method, :status, sale_items: [])
   end
 
 end

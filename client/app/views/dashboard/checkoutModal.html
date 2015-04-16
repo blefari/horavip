@@ -1,7 +1,7 @@
 <div class="modal-header">
   <button type="button" class="close" ng-click="close()"><span
     aria-hidden="true">&times;</span></button>
-  <h4 class="modal-title" id="myModalLabel">Pagamento - {{currentSale.sale.customer.name}}</h4>
+  <h4 class="modal-title" id="myModalLabel">Pagamento - {{currentSale.customer.name}}</h4>
 </div>
 <div class="modal-body checkout clearfix">
   <div class="">
@@ -13,14 +13,8 @@
         <td>Valor</td>
       </tr>
       </thead>
-      <!-- Mock -->
-      <tr>
-        <td>Mão Decorada</td>
-        <td>Barbara</td>
-        <td>R$25,00</td>
-      </tr>
 
-      <tr ng-repeat="item in currentSale.sale.sale_items">
+      <tr ng-repeat="item in currentSale.sale_items">
         <td>{{item.product.name}}</td>
         <td>{{item.professional.name}}</td>
         <td>{{item.product.price | currency}}</td>
@@ -36,14 +30,14 @@
     <p>Forma de Pagamento</p>
 
     <div class="btn-group">
-      <label class="btn btn-primary" ng-model="radioModel" btn-radio="'credit'" uncheckable>Cartão de Crédito</label>
-      <label class="btn btn-primary" ng-model="radioModel" btn-radio="'debit'" uncheckable>Cartão de Débito</label>
-      <label class="btn btn-primary" ng-model="radioModel" btn-radio="'money'" uncheckable>Dinheiro</label>
-      <label class="btn btn-primary" ng-model="radioModel" btn-radio="'check'" uncheckable>Cheque</label>
+      <label class="btn btn-primary" ng-model="currentSale.paymentMethod" btn-radio="'CREDIT'" uncheckable>Cartão de Crédito</label>
+      <label class="btn btn-primary" ng-model="currentSale.paymentMethod" btn-radio="'DEBIT'" uncheckable>Cartão de Débito</label>
+      <label class="btn btn-primary" ng-model="currentSale.paymentMethod" btn-radio="'MONEY'" uncheckable>Dinheiro</label>
+      <label class="btn btn-primary" ng-model="currentSale.paymentMethod" btn-radio="'CHECK'" uncheckable>Cheque</label>
     </div>
   </div>
 </div>
 <div class="modal-footer">
   <button type="button" class="btn btn-default" ng-click="close()">Cancelar</button>
-  <button type="button" class="btn btn-primary" ng-click>Concluir</button>
+  <button type="button" class="btn btn-primary" ng-click="completeSale()">Concluir</button>
 </div>

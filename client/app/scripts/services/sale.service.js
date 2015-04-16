@@ -5,8 +5,8 @@ angular.module('beautyApp')
 
     var base = ENV.apiEndpoint + '/api/v1/sale';
 
-    this.list = function(state){
-      return $http.get(base + '/' + state);
+    this.list = function(status){
+      return $http.get(base + '/' + status);
     };
 
     this.create = function(customer) {
@@ -17,12 +17,6 @@ angular.module('beautyApp')
 
     this.remove = function(sale) {
       return $http.delete(base + '/' + sale.id);
-    };
-
-    this.update = function(sale) {
-      return $http.put(base + '/' + sale.id, {
-        sale: sale
-      });
     };
 
     this.addProduct = function(sale, productId, professionalId) {
@@ -37,7 +31,8 @@ angular.module('beautyApp')
     };
 
     this.complete = function(sale){
-      return $http.put(base + '/' + sale.id + '/complete');
+      return $http.put(base + '/' + sale.id + '/complete', {
+        paymentMethod: sale.paymentMethod
+      });
     };
-
   });

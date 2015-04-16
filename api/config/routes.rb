@@ -29,6 +29,7 @@ Rails.application.routes.draw do
         get '/:status' => 'sale#list'
         post '/' => 'sale#create'
         put '/:id' => 'sale#update'
+        put '/:id/complete' => 'sale#completeSale'
         put '/:id/product' => 'sale#addProduct'
         delete '/product/:id' => 'sale#removeProduct'
         delete  '/:id' => 'sale#remove'

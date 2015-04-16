@@ -1,0 +1,23 @@
+<h1>Sales</h1>
+<table class="table">
+  <thead>
+  <tr>
+    <td>ID</td>
+    <td>Data</td>
+    <td>Hora</td>
+    <td>Cliente</td>
+    <td>Valor</td>
+    <td>Forma de Pagamento</td>
+  </tr>
+  </thead>
+  <tbody>
+  <tr ng-repeat="sale in sales">
+    <td>{{sale.id}}</td>
+    <td>{{sale.date}}</td>
+    <td>{{sale.date}}</td>
+    <td>{{sale.customer.name}}</td>
+    <td>{{sale.total | currency:'R$'}}</td>
+    <td>{{sale.payment_method}}</td>
+  </tr>
+  </tbody>
+</table>
