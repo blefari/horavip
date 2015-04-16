@@ -9,10 +9,10 @@
         <td></td>
       </tr>
       </thead>
-      <tr ng-repeat="currentSale in currentSales">
-        <td ng-click="selectCurrentSale(currentSale)">{{currentSale.sale.customer.name}}</td>
-        <td ng-click="selectCurrentSale(currentSale)">{{currentSale.total | currency}}</td>
-        <td class="btn-actions"><span class="glyphicon glyphicon-remove-circle" ng-click="removeCurrentSale(currentSale)"></span></td>
+      <tr ng-repeat="sale in currentSales">
+        <td ng-click="selectCurrentSale(sale)">{{sale.customer.name}}</td>
+        <td ng-click="selectCurrentSale(sale)">{{sale.total | currency}}</td>
+        <td class="btn-actions"><span class="glyphicon glyphicon-remove-circle" ng-click="removeCurrentSale(sale)"></span></td>
       </tr>
       <tr>
         <td colspan="2">
@@ -32,7 +32,7 @@
      <div class="animate-switch-left" ng-show="currentSale">
        <div class="customer-infos clearfix">
          <button type="button" class="close" aria-label="Close" ng-click="clearCurrentSale()"><span aria-hidden="true">&times;</span></button>
-         <span>Cliente</span><h4><strong>{{currentSale.sale.customer.name}}</strong></h4>
+         <span>Cliente</span><h4><strong>{{currentSale.customer.name}}</strong></h4>
          <!--<span>Permanência: 01:23:43</span>-->
        </div>
        <table class="customer-itens">
@@ -44,7 +44,7 @@
            <td></td>
          </tr>
          </thead>
-         <tr ng-repeat="item in currentSale.sale.sale_items">
+         <tr ng-repeat="item in currentSale.sale_items">
            <td>{{item.product.name}}</td>
            <td>{{item.professional.name}}</td>
            <td>{{item.product.price | currency}}</td>

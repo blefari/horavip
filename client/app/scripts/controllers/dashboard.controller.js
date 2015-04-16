@@ -1,21 +1,21 @@
 'use strict';
 
 angular.module('beautyApp')
-  .controller('DashboardCtrl', function ($scope, $auth, $modal, $state, CurrentSaleService, CustomerService, ProductService, ProfessionalService) {
+  .controller('DashboardCtrl', function ($scope, $auth, $modal, $state, SaleService, CustomerService, ProductService, ProfessionalService) {
 
     $auth.validateUser().catch(function () {
       $state.go('login');
     });
 
-    function calculateTotal(currentSale) {
-      var total = currentSale.sale.sale_items.sum(function(item){
+    function calculateTotal(sale) {
+      var total = sale.sale_items.sum(function(item){
         return parseFloat(item.product.price);
       });
-      currentSale.total = total;
-      return currentSale;
+      sale.total = total;
+      return sale;
     }
 
-    CurrentSaleService.list().success(function(response){
+    SaleService.list('ONGOING').success(function(response){
       $scope.currentSales = response.map(function(currentSale){
         return calculateTotal(currentSale);
       });
@@ -34,7 +34,7 @@ angular.module('beautyApp')
     });
 
     $scope.createCurrentSale = function() {
-      CurrentSaleService.create($scope.customer).success(function(response){
+      SaleService.create($scope.customer).success(function(response){
         response.total = 0;
         $scope.currentSales.push(response);
       }).error(function(response){
@@ -43,7 +43,7 @@ angular.module('beautyApp')
     };
 
     $scope.removeCurrentSale = function(currentSale) {
-      CurrentSaleService.remove(currentSale).success(function(response){
+      SaleService.remove(currentSale).success(function(response){
         $scope.currentSales.remove(response);
       }).error(function(response){
         console.log(response);
@@ -53,8 +53,8 @@ angular.module('beautyApp')
     $scope.addProduct = function() {
       var productId = $scope.product ? $scope.product.id : undefined;
       var professionalId = $scope.professional ? $scope.professional.id : undefined;
-      CurrentSaleService.addProduct($scope.currentSale, productId, professionalId).success(function(response) {
-        $scope.currentSale.sale.sale_items.push(response);
+      SaleService.addProduct($scope.currentSale, productId, professionalId).success(function(response) {
+        $scope.currentSale.sale_items.push(response);
         calculateTotal($scope.currentSale);
         $scope.product = undefined;
         $scope.professional = undefined;
@@ -62,8 +62,8 @@ angular.module('beautyApp')
     };
 
     $scope.removeProduct = function(productId){
-      CurrentSaleService.removeProduct(productId).success(function(response) {
-        $scope.currentSale.sale.sale_items.remove(function(item){
+      SaleService.removeProduct(productId).success(function(response) {
+        $scope.currentSale.sale_items.remove(function(item){
           return item.id === response.id;
         });
         calculateTotal($scope.currentSale);
@@ -95,7 +95,7 @@ angular.module('beautyApp')
       $scope.currentSale = undefined;
     };
   })
-  .controller('CheckoutModalCtrl', function($scope, $modalInstance, CurrentSaleService, currentSale){
+  .controller('CheckoutModalCtrl', function($scope, $modalInstance, SaleService, currentSale){
     $scope.currentSale = currentSale;
 
     $scope.close = function(){

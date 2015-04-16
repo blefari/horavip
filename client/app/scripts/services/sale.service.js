@@ -5,13 +5,13 @@ angular.module('beautyApp')
 
     var base = ENV.apiEndpoint + '/api/v1/sale';
 
-    this.list = function(){
-      return $http.get(base);
+    this.list = function(state){
+      return $http.get(base + '/' + state);
     };
 
-    this.create = function(sale) {
+    this.create = function(customer) {
       return $http.post(base, {
-        sale: sale
+        customerId: customer.id
       });
     };
 
@@ -23,6 +23,21 @@ angular.module('beautyApp')
       return $http.put(base + '/' + sale.id, {
         sale: sale
       });
+    };
+
+    this.addProduct = function(sale, productId, professionalId) {
+      return $http.put(base + '/' + sale.id + '/product/', {
+        productId: productId,
+        professionalId: professionalId
+      });
+    };
+
+    this.removeProduct = function(productId) {
+      return $http.delete(base + '/product/' + productId);
+    };
+
+    this.complete = function(sale){
+      return $http.put(base + '/' + sale.id + '/complete');
     };
 
   });
