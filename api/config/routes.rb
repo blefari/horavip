@@ -25,17 +25,12 @@ Rails.application.routes.draw do
       end
 
       scope 'sale' do
-        get '/current' => 'sale#listCurrent'
-        post '/current' => 'sale#createCurrent'
-        put '/current/:id' => 'sale#updateCurrent'
-        delete  '/current/:id' => 'sale#removeCurrent'
 
-        put '/current/:id/product' => 'sale#addProduct'
-        delete '/current/product/:id' => 'sale#removeProduct'
-
-        get '/' => 'sale#list'
+        get '/:status' => 'sale#list'
         post '/' => 'sale#create'
         put '/:id' => 'sale#update'
+        put '/:id/product' => 'sale#addProduct'
+        delete '/product/:id' => 'sale#removeProduct'
         delete  '/:id' => 'sale#remove'
       end
     end
