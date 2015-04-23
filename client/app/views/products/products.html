@@ -12,8 +12,8 @@
     <tbody>
     <tr ng-repeat="product in products">
       <td>{{product.name}}</td>
-      <td>{{product.price}}</td>
-      <td>{{product.percentage}}</td>
+      <td>{{product.price | currency}}</td>
+      <td>{{product.percentage | number: 2}}%</td>
       <td>{{product.active ? 'Ativo' : 'Desativado'}}</td>
       <td class="btn-actions">
         <span class="glyphicon glyphicon-edit" aria-hidden="true" ng-click="productModal(true, product)"></span>
