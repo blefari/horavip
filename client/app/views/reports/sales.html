@@ -13,8 +13,8 @@
   <tbody>
   <tr ng-repeat="sale in sales">
     <td>{{sale.id}}</td>
-    <td>{{sale.date}}</td>
-    <td>{{sale.date}}</td>
+    <td>{{sale.date | date}}</td>
+    <td>{{sale.date | date : 'h:mm a' : '-0300'}}</td>
     <td>{{sale.customer.name}}</td>
     <td>{{sale.total | currency:'R$'}}</td>
     <td>{{sale.payment_method}}</td>

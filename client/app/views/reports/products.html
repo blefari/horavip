@@ -9,59 +9,11 @@
   </tr>
   </thead>
   <tbody>
-  <tr>
-    <td>Escova Cabelo Comprido</td>
-    <td>45</td>
-    <td>R$40,00</td>
-    <td>R$1800,00</td>
-  </tr>
-  <tr>
-    <td>Escova Cabelo Comprido</td>
-    <td>45</td>
-    <td>R$40,00</td>
-    <td>R$1800,00</td>
-  </tr>
-  <tr>
-    <td>Escova Cabelo Comprido</td>
-    <td>45</td>
-    <td>R$40,00</td>
-    <td>R$1800,00</td>
-  </tr>
-  <tr>
-    <td>Escova Cabelo Comprido</td>
-    <td>45</td>
-    <td>R$40,00</td>
-    <td>R$1800,00</td>
-  </tr>
-  <tr>
-    <td>Escova Cabelo Comprido</td>
-    <td>45</td>
-    <td>R$40,00</td>
-    <td>R$1800,00</td>
-  </tr>
-  <tr>
-    <td>Escova Cabelo Comprido</td>
-    <td>45</td>
-    <td>R$40,00</td>
-    <td>R$1800,00</td>
-  </tr>
-  <tr>
-    <td>Escova Cabelo Comprido</td>
-    <td>45</td>
-    <td>R$40,00</td>
-    <td>R$1800,00</td>
-  </tr>
-  <tr>
-    <td>Escova Cabelo Comprido</td>
-    <td>45</td>
-    <td>R$40,00</td>
-    <td>R$1800,00</td>
-  </tr>
-  <tr>
-    <td>Escova Cabelo Comprido</td>
-    <td>45</td>
-    <td>R$40,00</td>
-    <td>R$1800,00</td>
+  <tr ng-repeat="product in products">
+    <td>{{product.name}}</td>
+    <td>{{product.quantity}}</td>
+    <td>{{product.price | currency}}</td>
+    <td>{{product.total | currency}}</td>
   </tr>
   </tbody>
 </table>

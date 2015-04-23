@@ -41,6 +41,7 @@ angular
     });
 
     $rootScope.$on('auth:invalid', function () {
+      $rootScope.loggedIn = false;
       $state.go('login');
     });
 
@@ -49,5 +50,6 @@ angular
     });
 
     $rootScope.$on('auth:validation-success', function () {
+      $rootScope.loggedIn = true;
     });
   });

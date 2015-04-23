@@ -50,6 +50,7 @@ class SaleController < ApplicationController
   def completeSale
     sale = Sale.find(params[:id])
     sale.status = 'COMPLETED'
+    sale.date = Time.zone.now
     sale.payment_method = params[:paymentMethod]
     sale.save
 

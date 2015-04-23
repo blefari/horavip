@@ -9,59 +9,11 @@
   </tr>
   </thead>
   <tbody>
-  <tr>
-    <td>Barbara</td>
-    <td>12</td>
-    <td>R$1320,00</td>
-    <td>R$120,00</td>
-  </tr>
-  <tr>
-    <td>Nai</td>
-    <td>5</td>
-    <td>R$231,00</td>
-    <td>R$120,00</td>
-  </tr>
-  <tr>
-    <td>Jane</td>
-    <td>4</td>
-    <td>R$196,00</td>
-    <td>R$120,00</td>
-  </tr>
-  <tr>
-    <td>Barbara</td>
-    <td>12</td>
-    <td>R$1320,00</td>
-    <td>R$120,00</td>
-  </tr>
-  <tr>
-    <td>Nai</td>
-    <td>5</td>
-    <td>R$231,00</td>
-    <td>R$120,00</td>
-  </tr>
-  <tr>
-    <td>Jane</td>
-    <td>4</td>
-    <td>R$196,00</td>
-    <td>R$120,00</td>
-  </tr>
-  <tr>
-    <td>Barbara</td>
-    <td>12</td>
-    <td>R$1320,00</td>
-    <td>R$120,00</td>
-  </tr>
-  <tr>
-    <td>Nai</td>
-    <td>5</td>
-    <td>R$231,00</td>
-    <td>R$120,00</td>
-  </tr>
-  <tr>
-    <td>Jane</td>
-    <td>4</td>
-    <td>R$196,00</td>
-    <td>R$120,00</td>
+  <tr ng-repeat="professional in professionals">
+    <td>{{professional.name}}</td>
+    <td>{{professional.quantity}}</td>
+    <td>{{professional.totalSold | currency}}</td>
+    <td>{{professional.comission | currency}}</td>
   </tr>
   </tbody>
 </table>

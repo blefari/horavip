@@ -99,6 +99,8 @@ angular.module('beautyApp')
 
     $scope.clearCurrentSale = function(){
       $scope.currentSale = undefined;
+      $scope.product = undefined;
+      $scope.professional = undefined;
     };
   })
   .controller('CheckoutModalCtrl', function($scope, $modalInstance, SaleService, currentSale){

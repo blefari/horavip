@@ -33,11 +33,10 @@
        <div class="customer-infos clearfix">
          <button type="button" class="close" aria-label="Close" ng-click="clearCurrentSale()"><span aria-hidden="true">&times;</span></button>
          <span>Cliente</span><h4><strong>{{currentSale.customer.name}}</strong></h4>
-         <!--<span>Permanência: 01:23:43</span>-->
        </div>
        <table class="customer-itens">
          <thead>
-         <tr>
+         <tr ng-show="currentSale.sale_items.length > 0">
            <td>Item</td>
            <td>Profissional</td>
            <td>Valor</td>
@@ -64,7 +63,7 @@
              </select>
            </td>
            <td class="save-item" colspan="2" >
-             <button class="btn btn-success btn-sm" ng-click="addProduct()"><span class="glyphicon glyphicon-ok"></span></button>
+             <button class="btn btn-success btn-sm" ng-click="addProduct()" ng-disabled="!product"><span class="glyphicon glyphicon-ok"></span></button>
            </td>
          </tr>
          <tfoot>
